@@ -1,0 +1,906 @@
+<title>SECOND HOUSE 京島</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;800&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+KR:wght@600;800&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<style>
+  :root{
+    --bg:#ffffff;
+    --bg-raised:#f3f5fa;
+    --panel:#fbeeec;
+    --panel-soft:#f5e3e0;
+    --text:#1e2a52;
+    --text-soft:#55608a;
+    --text-on-panel:#1e2a52;
+    --text-on-panel-soft:#55608a;
+    --accent:#d6697c;
+    --accent-deep:#b84f61;
+    --accent-2:#b8935a;
+    --border:rgba(30,42,82,0.14);
+    --border-on-panel:rgba(30,42,82,0.14);
+    --shadow:0 18px 40px -22px rgba(30,42,82,0.18);
+    --font-display:"Meiryo","Meiryo UI","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    --font-body:"Meiryo","Meiryo UI","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#121a33;
+      --bg-raised:#182142;
+      --panel:#0d1226;
+      --panel-soft:#1a2348;
+      --text:#f3f1ec;
+      --text-soft:#b9c0dc;
+      --text-on-panel:#f3f1ec;
+      --text-on-panel-soft:#b9c0dc;
+      --accent:#ef9aa8;
+      --accent-deep:#e07c8d;
+      --accent-2:#d9b877;
+      --border:rgba(243,241,236,0.14);
+      --border-on-panel:rgba(243,241,236,0.14);
+      --shadow:0 18px 40px -20px rgba(0,0,0,0.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#121a33;
+    --bg-raised:#182142;
+    --panel:#0d1226;
+    --panel-soft:#1a2348;
+    --text:#f3f1ec;
+    --text-soft:#b9c0dc;
+    --text-on-panel:#f3f1ec;
+    --text-on-panel-soft:#b9c0dc;
+    --accent:#ef9aa8;
+    --accent-deep:#e07c8d;
+    --accent-2:#d9b877;
+    --border:rgba(243,241,236,0.14);
+    --border-on-panel:rgba(243,241,236,0.14);
+    --shadow:0 18px 40px -20px rgba(0,0,0,0.6);
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    line-height:1.8;
+    -webkit-font-smoothing:antialiased;
+  }
+  #app[data-lang="zh"]{ --font-display:"Noto Serif SC","Songti SC",serif; --font-body:"Noto Sans SC","PingFang SC",sans-serif; }
+  #app[data-lang="ko"]{ --font-display:"Noto Serif KR","Nanum Myeongjo",serif; --font-body:"Noto Sans KR","Malgun Gothic",sans-serif; }
+  h1,h2,h3{
+    font-family:var(--font-display);
+    text-wrap:balance;
+    margin:0;
+    color:inherit;
+  }
+  a{color:inherit;}
+  img,svg{display:block;max-width:100%;}
+  button{font-family:inherit;}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 clamp(20px,5vw,48px);}
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    position:sticky;top:0;z-index:40;
+    background:color-mix(in srgb, var(--panel) 92%, transparent);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border-on-panel);
+  }
+  .topbar-inner{
+    max-width:1040px;margin:0 auto;padding:12px clamp(20px,5vw,48px);
+    display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  }
+  .wordmark{
+    color:var(--text-on-panel);
+    font-family:var(--font-display);
+    font-size:16px;letter-spacing:.04em;
+    display:flex;align-items:baseline;gap:8px;
+    text-decoration:none;flex:none;
+  }
+  .wordmark small{
+    font-family:"Zen Kaku Gothic New",sans-serif;
+    font-size:11px;color:var(--text-on-panel-soft);letter-spacing:.14em;
+  }
+  .topbar-right{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+  .langbar{display:flex;gap:4px;background:color-mix(in srgb, var(--text-on-panel) 12%, transparent);border-radius:999px;padding:3px;}
+  .langbtn{
+    border:none;background:transparent;color:var(--text-on-panel-soft);
+    font-size:12.5px;font-weight:700;padding:6px 10px;border-radius:999px;cursor:pointer;
+    letter-spacing:.02em;
+  }
+  .langbtn[aria-pressed="true"]{background:var(--accent);color:#fff9f0;}
+  .langbtn:hover{color:var(--text-on-panel);}
+  .langbtn:focus-visible{outline:2px solid var(--accent-2);outline-offset:2px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--accent);color:#fff9f0;
+    font-weight:700;font-size:14px;letter-spacing:.02em;
+    padding:11px 20px;border-radius:999px;text-decoration:none;
+    box-shadow:0 10px 24px -10px rgba(184,79,97,0.5);
+    transition:transform .15s ease, background .15s ease;
+    white-space:nowrap;border:none;cursor:pointer;
+  }
+  .btn:hover{background:var(--accent-deep);transform:translateY(-1px);}
+  .btn:focus-visible{outline:3px solid var(--accent-2);outline-offset:2px;}
+  .btn.small{padding:9px 16px;font-size:13px;}
+  .btn-outline{
+    display:inline-flex;align-items:center;gap:8px;
+    background:transparent;color:var(--text);
+    font-weight:700;font-size:14px;letter-spacing:.02em;
+    padding:10px 20px;border-radius:999px;text-decoration:none;
+    border:1.5px solid var(--text);
+    transition:background .15s ease, color .15s ease;
+  }
+  .btn-outline:hover{background:var(--text);color:var(--bg);}
+  .btn-outline:focus-visible{outline:3px solid var(--accent-2);outline-offset:2px;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    min-height:clamp(460px,64vw,640px);
+    background:var(--bg-raised);
+  }
+  .hero-photo{
+    position:absolute;inset:0;width:100%;height:100%;
+    object-fit:cover;object-position:center 35%;
+    display:block;
+  }
+  .hero-scrim{
+    position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(18,26,51,.05) 0%, rgba(18,26,51,0) 30%, rgba(18,26,51,.14) 100%);
+  }
+  .hero-content{
+    position:relative;z-index:2;max-width:1040px;margin:0 auto;
+    min-height:clamp(460px,64vw,640px);
+    padding:clamp(22px,4vw,44px) clamp(20px,5vw,48px);
+    display:flex;flex-direction:column;justify-content:space-between;gap:24px;
+  }
+  .hero-card{
+    background:rgba(255,255,255,0.95);
+    border-radius:20px;
+    padding:clamp(22px,4.5vw,36px);
+    max-width:460px;
+    box-shadow:0 24px 60px -20px rgba(30,42,82,0.35);
+    color:var(--text);
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--text-soft);margin-bottom:16px;
+  }
+  .seal{
+    width:26px;height:26px;border-radius:50%;
+    border:1.5px solid currentColor;
+    display:inline-flex;align-items:center;justify-content:center;
+    font-family:var(--font-display);font-size:13px;
+    color:var(--accent-deep);border-color:var(--accent-deep);
+    flex:none;
+  }
+  .hero-card h1{
+    font-size:clamp(21px,3.6vw,30px);
+    font-weight:800;
+    line-height:1.44;
+  }
+  .hero-card h1 em{
+    font-style:normal;color:var(--accent-deep);
+  }
+  .hero-card p.lede{
+    margin:16px 0 0;
+    font-size:14.5px;color:var(--text-soft);
+  }
+  .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin:22px 0 0;}
+  .hero-brandmark{
+    display:inline-flex;align-items:center;gap:10px;align-self:flex-start;
+    text-decoration:none;
+  }
+  .hero-brandmark svg{
+    width:44px;height:44px;flex:none;
+    filter:drop-shadow(0 1px 3px rgba(255,255,255,.9)) drop-shadow(0 0 10px rgba(255,255,255,.6));
+  }
+  .hero-brandmark .word{
+    font-family:var(--font-display);font-weight:800;letter-spacing:.01em;
+    font-size:clamp(19px,3.6vw,28px);color:#1e2a52;
+    text-shadow:0 1px 2px rgba(255,255,255,.9), 0 0 16px rgba(255,255,255,.75);
+  }
+
+  .stats-bar{
+    display:flex;flex-wrap:wrap;justify-content:center;gap:12px 28px;
+    padding:20px clamp(20px,5vw,48px);background:var(--bg-raised);
+    border-bottom:1px solid var(--border);
+  }
+  .chip{font-size:13.5px;color:var(--text-soft);display:flex;align-items:center;gap:8px;}
+  .chip b{color:var(--text);font-weight:700;}
+  .chip .dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none;}
+
+  @media (max-width:640px){
+    .hero{min-height:auto;}
+    .hero-content{min-height:auto;}
+    .hero-card{max-width:none;}
+  }
+
+  /* ---------- sections ---------- */
+  section{padding:clamp(52px,9vw,84px) 0;}
+  .section-head{max-width:58ch;margin-bottom:40px;}
+  .section-head .eyebrow{color:var(--text-soft);}
+  .section-head .seal{color:var(--accent-deep);border-color:var(--accent-deep);}
+  .section-head h2{font-size:clamp(23px,3.2vw,31px);font-weight:700;}
+  .section-head p{color:var(--text-soft);margin:14px 0 0;max-width:54ch;}
+
+  .band{background:var(--bg-raised);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+
+  .stat-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+    background:var(--border);border:1px solid var(--border);border-radius:14px;overflow:hidden;
+  }
+  .stat{background:var(--bg-raised);padding:26px 18px;text-align:left;}
+  .stat .num{
+    font-family:var(--font-display);font-size:clamp(24px,3.2vw,32px);
+    font-variant-numeric:tabular-nums;color:var(--accent-deep);
+  }
+  .stat .label{font-size:12.5px;color:var(--text-soft);margin-top:6px;}
+  @media (max-width:720px){.stat-grid{grid-template-columns:repeat(2,1fr);}}
+
+  .two-col{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,56px);align-items:start;}
+  @media (max-width:760px){.two-col{grid-template-columns:1fr;}}
+
+  .list-plain{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;}
+  .list-plain li{
+    display:flex;justify-content:space-between;gap:16px;
+    padding-bottom:14px;border-bottom:1px solid var(--border);
+    font-size:15px;
+  }
+  .list-plain li span:first-child{color:var(--text-soft);}
+  .list-plain li span:last-child{font-weight:700;font-variant-numeric:tabular-nums;}
+
+  .tag-grid{display:flex;flex-wrap:wrap;gap:10px;}
+  .tag{
+    border:1px solid var(--border);border-radius:999px;
+    padding:8px 16px;font-size:13.5px;color:var(--text-soft);
+    background:var(--bg-raised);
+  }
+
+  /* access timeline */
+  .route{
+    counter-reset:step;
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    position:relative;margin-top:8px;
+  }
+  .route::before{
+    content:"";position:absolute;top:11px;left:6%;right:6%;height:1px;
+    background:var(--border);
+  }
+  .route-step{position:relative;text-align:center;padding-top:32px;}
+  .route-step::before{
+    counter-increment:step;content:counter(step);
+    position:absolute;top:2px;left:50%;transform:translateX(-50%);
+    width:18px;height:18px;border-radius:50%;background:var(--accent);
+    color:#fff9f0;font-size:10px;font-weight:700;line-height:1;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .route-step .t{font-weight:700;font-family:var(--font-display);color:var(--accent-deep);font-size:14.5px;}
+  .route-step .d{font-size:13px;color:var(--text-soft);margin-top:6px;}
+  @media (max-width:640px){
+    .route{grid-template-columns:1fr;gap:22px;}
+    .route::before{display:none;}
+    .route-step{padding-top:0;padding-left:34px;text-align:left;}
+    .route-step::before{display:flex;top:2px;left:0;transform:none;}
+  }
+
+  .note-line{font-size:13.5px;color:var(--text-soft);margin-top:22px;}
+
+  /* illustrated mini map */
+  .map-card{
+    margin-top:32px;
+    background:var(--bg-raised);border:1px solid var(--border);border-radius:16px;
+    padding:clamp(20px,4vw,32px);display:flex;flex-direction:column;align-items:center;gap:18px;
+  }
+  .mini-map{width:100%;max-width:560px;height:auto;display:block;}
+  .mini-map .mm-path{fill:none;stroke:var(--border);stroke-width:3;stroke-dasharray:2 10;stroke-linecap:round;}
+  .mini-map .mm-house{fill:var(--accent-deep);}
+  .mini-map .mm-house-door{fill:var(--bg-raised);}
+  .mini-map .mm-pin{fill:var(--accent);}
+  .mini-map .mm-pin-text{fill:#fff9f0;font-size:12px;font-weight:700;text-anchor:middle;}
+  .mini-map .mm-landmark{fill:var(--text-soft);opacity:.3;}
+
+  /* host card */
+  .host-card{
+    display:flex;gap:18px;align-items:flex-start;
+    background:var(--bg-raised);border:1px solid var(--border);
+    border-radius:16px;padding:26px;box-shadow:var(--shadow);
+  }
+  .avatar{
+    width:56px;height:56px;border-radius:50%;flex:none;
+    background:linear-gradient(160deg,var(--accent),var(--accent-deep));
+    display:flex;align-items:center;justify-content:center;
+    color:#fff9f0;font-family:var(--font-display);font-size:20px;font-weight:700;
+  }
+  .host-meta{font-size:13.5px;color:var(--text-soft);display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;}
+  .stars{color:var(--accent-deep);letter-spacing:2px;font-size:15px;}
+  blockquote{
+    margin:22px 0 0;padding:18px 20px;border-left:3px solid var(--accent);
+    background:var(--bg-raised);border-radius:0 10px 10px 0;
+    font-size:15px;color:var(--text-soft);font-style:italic;
+  }
+
+  /* gallery */
+  .gallery-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:10px;
+  }
+  @media (max-width:900px){.gallery-grid{grid-template-columns:repeat(3,1fr);}}
+  @media (max-width:600px){.gallery-grid{grid-template-columns:repeat(2,1fr);}}
+  .gallery-item{
+    position:relative;aspect-ratio:4/3;border-radius:10px;overflow:hidden;
+    border:1px solid var(--border);background:var(--bg-raised);
+    cursor:pointer;padding:0;
+  }
+  .gallery-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s ease;}
+  .gallery-item:hover img{transform:scale(1.05);}
+  .gallery-item:focus-visible{outline:3px solid var(--accent-2);outline-offset:2px;}
+  .gallery-cap{
+    position:absolute;left:0;right:0;bottom:0;
+    background:linear-gradient(0deg, rgba(16,20,15,0.78), transparent);
+    color:#fff9f0;font-size:11.5px;padding:16px 10px 8px;text-align:left;
+    line-height:1.4;
+  }
+
+  /* lightbox */
+  .lightbox{
+    position:fixed;inset:0;z-index:100;background:rgba(10,12,9,0.92);
+    display:flex;align-items:center;justify-content:center;padding:24px;
+  }
+  .lightbox[hidden]{display:none;}
+  .lightbox figure{margin:0;max-width:min(92vw,1100px);max-height:88vh;display:flex;flex-direction:column;gap:14px;align-items:center;}
+  .lightbox img{max-width:100%;max-height:72vh;width:auto;height:auto;border-radius:8px;object-fit:contain;}
+  .lightbox figcaption{color:#fff9f0;font-size:14px;text-align:center;}
+  .lb-btn{
+    position:absolute;background:rgba(255,255,255,0.1);color:#fff9f0;border:none;
+    width:44px;height:44px;border-radius:50%;font-size:20px;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .lb-btn:hover{background:rgba(255,255,255,0.22);}
+  .lb-btn:focus-visible{outline:2px solid var(--accent);}
+  .lb-close{top:20px;right:20px;}
+  .lb-prev{left:20px;top:50%;transform:translateY(-50%);}
+  .lb-next{right:20px;top:50%;transform:translateY(-50%);}
+  @media (max-width:640px){.lb-prev,.lb-next{width:38px;height:38px;font-size:17px;}}
+
+  /* final cta */
+  .final{
+    background:var(--panel);color:var(--text-on-panel);
+    border-radius:22px;padding:clamp(36px,7vw,64px);
+    display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:28px;
+  }
+  .final h2{font-size:clamp(23px,3.2vw,31px);}
+  .final p{color:var(--text-on-panel-soft);margin:12px 0 0;max-width:42ch;}
+
+  footer{padding:clamp(36px,7vw,56px) 0 60px;color:var(--text-soft);font-size:13px;}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;border-top:1px solid var(--border);padding-top:24px;}
+  footer a{color:var(--accent-deep);text-decoration:none;}
+  footer a:hover{text-decoration:underline;}
+
+  a:focus-visible, button:focus-visible{outline:3px solid var(--accent-2);outline-offset:2px;}
+</style>
+
+<div id="app" data-lang="ja">
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <a class="wordmark" href="#top" data-i18n="wordmark_name">SECOND HOUSE 京島</a>
+    <div class="topbar-right">
+      <div class="langbar" role="group" aria-label="Language">
+        <button class="langbtn" type="button" data-setlang="en" aria-pressed="false">EN</button>
+        <button class="langbtn" type="button" data-setlang="zh" aria-pressed="false">中文</button>
+        <button class="langbtn" type="button" data-setlang="ko" aria-pressed="false">한국어</button>
+        <button class="langbtn" type="button" data-setlang="ja" aria-pressed="true">日本語</button>
+      </div>
+      <a class="btn small" href="https://airbnb.jp/h/secondhousekyojima" target="_blank" rel="noopener" data-i18n="nav_book">Airbnbで予約</a>
+    </div>
+  </div>
+</div>
+
+<a id="top"></a>
+<header class="hero">
+  <img class="hero-photo" src="photos/DSC01455.jpg" alt="">
+  <div class="hero-scrim"></div>
+  <div class="hero-content">
+    <div class="hero-card">
+      <div class="eyebrow"><span class="seal">京</span><span data-i18n="hero_eyebrow">東京都墨田区・京島 / 一棟貸し一軒家</span></div>
+      <h1 data-i18n="hero_title">広々とした日本の一軒家で、<br><em>くつろぎ</em>のひとときを。</h1>
+      <p class="lede" data-i18n="hero_lede">京島の下町に建つ、リノベーション済みの日本家屋を丸ごと貸し切り。最大10名までゆったり泊まれる広さで、家族や友人との滞在も快適に。予約はAirbnbから承っています。</p>
+      <div class="hero-cta">
+        <a class="btn" href="https://airbnb.jp/h/secondhousekyojima" target="_blank" rel="noopener" data-i18n="hero_cta">空室状況を見て予約する ↗</a>
+        <a class="btn-outline" href="https://maps.app.goo.gl/euxs78Ycq13obsQ67" target="_blank" rel="noopener" data-i18n="hero_maps_cta">📍 地図を見る</a>
+      </div>
+    </div>
+    <a class="hero-brandmark" href="#top" aria-hidden="true" tabindex="-1">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <polygon points="32,4 60,28 52,28 52,58 12,58 12,28 4,28" fill="none" stroke="#1e2a52" stroke-width="4.5" stroke-linejoin="round"/>
+        <rect x="24" y="34" width="16" height="16" fill="none" stroke="#1e2a52" stroke-width="4"/>
+        <line x1="32" y1="34" x2="32" y2="50" stroke="#1e2a52" stroke-width="4"/>
+        <line x1="24" y1="42" x2="40" y2="42" stroke="#1e2a52" stroke-width="4"/>
+      </svg>
+      <span class="word" data-i18n="wordmark_name">SECOND HOUSE 京島</span>
+    </a>
+  </div>
+</header>
+
+<div class="stats-bar wrap">
+  <span class="chip"><span class="dot"></span><span data-i18n="chip1">最大<b>10名</b>まで宿泊可</span></span>
+  <span class="chip"><span class="dot"></span><span data-i18n="chip2">寝室<b>3室</b>・64㎡</span></span>
+  <span class="chip"><span class="dot"></span><span data-i18n="chip3">京成曳舟駅から徒歩<b>8分</b></span></span>
+  <span class="chip"><span class="dot"></span><span data-i18n="chip4">評価<b>5.0</b>（レビュー5件）</span></span>
+</div>
+
+<main>
+  <section class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span class="seal">棲</span>ABOUT THE HOUSE</div>
+      <h2 data-i18n="about_h2">一棟をまるごと貸し切る、下町の隠れ家</h2>
+      <p data-i18n="about_p">京島の路地裏に建つ一軒家をリノベーションした宿。壁一枚隔てて誰かに気を使うことなく、グループや三世代家族でもゆったり過ごせる広さを備えています。セルフチェックイン対応で、到着時間を気にせず滞在をスタートできます。</p>
+    </div>
+    <div class="stat-grid">
+      <div class="stat"><div class="num" data-i18n="stat1_num">10名</div><div class="label" data-i18n="stat1_label">最大宿泊人数（快適人数6名）</div></div>
+      <div class="stat"><div class="num" data-i18n="stat2_num">3室</div><div class="label" data-i18n="stat2_label">寝室数</div></div>
+      <div class="stat"><div class="num">64㎡</div><div class="label" data-i18n="stat3_label">総面積</div></div>
+      <div class="stat"><div class="num" data-i18n="stat4_num">2組</div><div class="label" data-i18n="stat4_label">シャワー・トイレ</div></div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap two-col">
+      <div>
+        <div class="section-head" style="margin-bottom:24px;">
+          <div class="eyebrow"><span class="seal">寝</span>ROOMS &amp; BEDS</div>
+          <h2 data-i18n="beds_h2">ベッド構成</h2>
+        </div>
+        <ul class="list-plain">
+          <li><span data-i18n="bed1_label">ダブルベッド</span><span data-i18n="bed1_val">5台</span></li>
+          <li><span data-i18n="bed2_label">ソファーベッド</span><span data-i18n="bed2_val">1台</span></li>
+          <li><span data-i18n="bed3_label">シャワールーム</span><span data-i18n="bed3_val">2箇所</span></li>
+          <li><span data-i18n="bed4_label">トイレ</span><span data-i18n="bed4_val">2箇所</span></li>
+        </ul>
+        <p class="note-line" data-i18n="beds_note">寝室は3室に分かれており、グループ利用でもプライベート空間を確保しやすい間取りです。</p>
+      </div>
+      <div>
+        <div class="section-head" style="margin-bottom:24px;">
+          <div class="eyebrow"><span class="seal">具</span>AMENITIES</div>
+          <h2 data-i18n="amenities_h2">設備・アメニティ</h2>
+        </div>
+        <div class="tag-grid">
+          <span class="tag" data-i18n="tag1">キッチン</span>
+          <span class="tag">Wi-Fi</span>
+          <span class="tag" data-i18n="tag2">仕事用スペース</span>
+          <span class="tag" data-i18n="tag3">テレビ</span>
+          <span class="tag" data-i18n="tag4">洗濯機・乾燥機</span>
+          <span class="tag" data-i18n="tag5">エアコン</span>
+          <span class="tag" data-i18n="tag6">セルフチェックイン</span>
+        </div>
+        <p class="note-line" data-i18n="amenities_note">上記のほか、Airbnb掲載ページには全49種類のアメニティが記載されています。詳細は予約ページでご確認ください。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span class="seal">道</span>ACCESS</div>
+      <h2 data-i18n="access_h2">京成曳舟駅から徒歩8分、下町散歩の起点に</h2>
+      <p data-i18n="access_p">最寄り駅から近く、日用品の買い物にも困りません。浅草・秋葉原・銀座方面へのアクセスもよく、羽田・成田両空港への移動もしやすい立地です。</p>
+    </div>
+    <div class="route">
+      <div class="route-step"><div class="t" data-i18n="route1_t">徒歩2分</div><div class="d" data-i18n="route1_d">コンビニエンスストア</div></div>
+      <div class="route-step"><div class="t" data-i18n="route2_t">徒歩6分</div><div class="d" data-i18n="route2_d">スーパーマーケット</div></div>
+      <div class="route-step"><div class="t" data-i18n="route3_t">徒歩8分</div><div class="d" data-i18n="route3_d">京成曳舟駅</div></div>
+      <div class="route-step"><div class="t" data-i18n="route4_t">徒歩18分</div><div class="d" data-i18n="route4_d">東京スカイツリー</div></div>
+    </div>
+
+    <div class="map-card">
+      <svg class="mini-map" viewBox="0 0 420 160" role="img" aria-label="Illustrated walking route from the house to the convenience store, supermarket, station and Tokyo Skytree">
+        <path class="mm-path" d="M30,112 C80,70 110,150 140,92 C165,60 195,150 215,124 C235,105 260,70 285,78 C315,88 345,55 380,40"/>
+        <g class="mm-landmark">
+          <polygon points="394,40 400,6 404,6 410,40"/>
+          <ellipse cx="402" cy="20" rx="5" ry="2.2"/>
+        </g>
+        <g transform="translate(30,112)">
+          <polygon class="mm-house" points="0,-18 16,-4 16,16 -16,16 -16,-4"/>
+          <rect class="mm-house-door" x="-5" y="2" width="10" height="14"/>
+        </g>
+        <circle class="mm-pin" cx="140" cy="92" r="13"/>
+        <text class="mm-pin-text" x="140" y="96">1</text>
+        <circle class="mm-pin" cx="215" cy="124" r="13"/>
+        <text class="mm-pin-text" x="215" y="128">2</text>
+        <circle class="mm-pin" cx="285" cy="78" r="13"/>
+        <text class="mm-pin-text" x="285" y="82">3</text>
+        <circle class="mm-pin" cx="380" cy="40" r="13"/>
+        <text class="mm-pin-text" x="380" y="44">4</text>
+      </svg>
+      <a class="btn-outline" href="https://maps.app.goo.gl/euxs78Ycq13obsQ67" target="_blank" rel="noopener" data-i18n="maps_btn">📍 Googleマップで見る ↗</a>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow"><span class="seal">主</span>HOST</div>
+        <h2 data-i18n="host_h2">ホストについて</h2>
+      </div>
+      <div class="host-card">
+        <div class="avatar">健</div>
+        <div>
+          <div style="font-weight:700;font-size:16px;">Kenta<span style="font-weight:400;color:var(--text-soft);font-size:13.5px;" data-i18n="host_years"> ・ ホスティング歴2年</span></div>
+          <div class="host-meta">
+            <span data-i18n="host_rate">返信率 100%</span>
+            <span>・</span>
+            <span data-i18n="host_speed">通常1時間以内に返信</span>
+            <span>・</span>
+            <span data-i18n="host_cohost">補助ホスト：奈美</span>
+          </div>
+          <blockquote data-i18n="host_quote">「大変広くて便利」 — ゲストレビューより</blockquote>
+          <div style="margin-top:14px;" class="stars" aria-label="5.0 rating, 5 reviews">★★★★★ <span style="color:var(--text-soft);font-size:13.5px;" data-i18n="host_rating">5.0（レビュー5件）</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" id="gallery-section">
+    <div class="section-head">
+      <div class="eyebrow"><span class="seal">撮</span>GALLERY</div>
+      <h2 data-i18n="gallery_h2">写真でみる室内</h2>
+      <p data-i18n="gallery_p">全16点の写真で、部屋の隅々までご覧いただけます。写真をクリックすると拡大表示されます。</p>
+    </div>
+    <div class="gallery-grid" id="gallery-grid"></div>
+  </section>
+
+  <section class="wrap">
+    <div class="final">
+      <div>
+        <h2 data-i18n="final_h2">京島での滞在は、Airbnbから。</h2>
+        <p data-i18n="final_p">料金・空室状況は日程によって変動します。カレンダーの確認から予約の完了まで、Airbnbのページで安全に行えます。</p>
+      </div>
+      <a class="btn" href="https://airbnb.jp/h/secondhousekyojima" target="_blank" rel="noopener" data-i18n="final_cta">Airbnbで空室を確認する ↗</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><span data-i18n="footer_line1">SECOND HOUSE 京島 ／ 東京都墨田区京島（京成曳舟駅 徒歩8分）</span><br><span data-i18n="footer_line2">ホスト：Kenta・奈美</span></div>
+    <div>
+      <a href="https://airbnb.jp/h/secondhousekyojima" target="_blank" rel="noopener">airbnb.jp/h/secondhousekyojima</a><br>
+      <a href="https://maps.app.goo.gl/euxs78Ycq13obsQ67" target="_blank" rel="noopener" data-i18n="footer_map_link">Googleマップで見る ↗</a>
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lb-btn lb-close" id="lb-close" type="button" aria-label="Close">✕</button>
+  <button class="lb-btn lb-prev" id="lb-prev" type="button" aria-label="Previous photo">‹</button>
+  <button class="lb-btn lb-next" id="lb-next" type="button" aria-label="Next photo">›</button>
+  <figure>
+    <img id="lb-img" src="" alt="">
+    <figcaption id="lb-caption"></figcaption>
+  </figure>
+</div>
+
+</div>
+
+<script>
+(function(){
+  var PHOTOS = [
+    { file:"photos/DSC01383.jpg", key:"p1" },
+    { file:"photos/DSC01399.jpg", key:"p2" },
+    { file:"photos/DSC01410.jpg", key:"p3" },
+    { file:"photos/DSC01417.jpg", key:"p4" },
+    { file:"photos/DSC01430.jpg", key:"p5" },
+    { file:"photos/DSC01455.jpg", key:"p6" },
+    { file:"photos/DSC01463.jpg", key:"p7" },
+    { file:"photos/DSC01474.jpg", key:"p8" },
+    { file:"photos/DSC01488.jpg", key:"p9" },
+    { file:"photos/DSC01503.jpg", key:"p10" },
+    { file:"photos/DSC01517.jpg", key:"p11" },
+    { file:"photos/DSC01552.jpg", key:"p12" },
+    { file:"photos/DSC01589.jpg", key:"p13" },
+    { file:"photos/DSC01603.jpg", key:"p14" },
+    { file:"photos/IMG_3639.jpg", key:"p15" },
+    { file:"photos/IMG_3668.jpg", key:"p16" }
+  ];
+
+  var I18N = {
+    ja: {
+      wordmark_name:"SECOND HOUSE 京島",
+      nav_book:"Airbnbで予約",
+      hero_eyebrow:"東京都墨田区・京島 / 一棟貸し一軒家",
+      hero_title:"広々とした日本の一軒家で、<br><em>くつろぎ</em>のひとときを。",
+      hero_lede:"京島の下町に建つ、リノベーション済みの日本家屋を丸ごと貸し切り。最大10名までゆったり泊まれる広さで、家族や友人との滞在も快適に。予約はAirbnbから承っています。",
+      hero_cta:"空室状況を見て予約する ↗",
+      hero_maps_cta:"📍 地図を見る",
+      chip1:"最大<b>10名</b>まで宿泊可", chip2:"寝室<b>3室</b>・64㎡", chip3:"京成曳舟駅から徒歩<b>8分</b>", chip4:"評価<b>5.0</b>（レビュー5件）",
+      about_h2:"一棟をまるごと貸し切る、下町の隠れ家",
+      about_p:"京島の路地裏に建つ一軒家をリノベーションした宿。壁一枚隔てて誰かに気を使うことなく、グループや三世代家族でもゆったり過ごせる広さを備えています。セルフチェックイン対応で、到着時間を気にせず滞在をスタートできます。",
+      stat1_num:"10名", stat1_label:"最大宿泊人数（快適人数6名）",
+      stat2_num:"3室", stat2_label:"寝室数",
+      stat3_label:"総面積",
+      stat4_num:"2組", stat4_label:"シャワー・トイレ",
+      beds_h2:"ベッド構成",
+      bed1_label:"ダブルベッド", bed1_val:"5台",
+      bed2_label:"ソファーベッド", bed2_val:"1台",
+      bed3_label:"シャワールーム", bed3_val:"2箇所",
+      bed4_label:"トイレ", bed4_val:"2箇所",
+      beds_note:"寝室は3室に分かれており、グループ利用でもプライベート空間を確保しやすい間取りです。",
+      amenities_h2:"設備・アメニティ",
+      tag1:"キッチン", tag2:"仕事用スペース", tag3:"テレビ", tag4:"洗濯機・乾燥機", tag5:"エアコン", tag6:"セルフチェックイン",
+      amenities_note:"上記のほか、Airbnb掲載ページには全49種類のアメニティが記載されています。詳細は予約ページでご確認ください。",
+      access_h2:"京成曳舟駅から徒歩8分、下町散歩の起点に",
+      access_p:"最寄り駅から近く、日用品の買い物にも困りません。浅草・秋葉原・銀座方面へのアクセスもよく、羽田・成田両空港への移動もしやすい立地です。",
+      route1_t:"徒歩2分", route1_d:"コンビニエンスストア",
+      route2_t:"徒歩6分", route2_d:"スーパーマーケット",
+      route3_t:"徒歩8分", route3_d:"京成曳舟駅",
+      route4_t:"徒歩18分", route4_d:"東京スカイツリー",
+      maps_btn:"📍 Googleマップで見る ↗",
+      host_h2:"ホストについて",
+      host_years:" ・ ホスティング歴2年",
+      host_rate:"返信率 100%", host_speed:"通常1時間以内に返信", host_cohost:"補助ホスト：奈美",
+      host_quote:"「大変広くて便利」 — ゲストレビューより",
+      host_rating:"5.0（レビュー5件）",
+      gallery_h2:"写真でみる室内",
+      gallery_p:"全16点の写真で、部屋の隅々までご覧いただけます。写真をクリックすると拡大表示されます。",
+      final_h2:"京島での滞在は、Airbnbから。",
+      final_p:"料金・空室状況は日程によって変動します。カレンダーの確認から予約の完了まで、Airbnbのページで安全に行えます。",
+      final_cta:"Airbnbで空室を確認する ↗",
+      footer_line1:"SECOND HOUSE 京島 ／ 東京都墨田区京島（京成曳舟駅 徒歩8分）",
+      footer_line2:"ホスト：Kenta・奈美",
+      footer_map_link:"Googleマップで見る ↗",
+      lb_close:"閉じる", lb_prev:"前の写真", lb_next:"次の写真",
+      p1:"ダイニング＆キッチン", p2:"フル装備のキッチン", p3:"洗面台と洗濯乾燥機", p4:"ウォシュレット付きトイレ",
+      p5:"シャワールーム", p6:"明るい角部屋の寝室", p7:"ダブルベッドの寝室", p8:"クローゼット付き寝室",
+      p9:"寝室内のワークスペース", p10:"窓辺のツインベッド", p11:"洗面台付き第2のトイレ", p12:"オーブントースター＆電子レンジ",
+      p13:"京島の路地に建つ外観", p14:"京成曳舟駅（徒歩8分）", p15:"ベビーベッド完備", p16:"ベビーカーの貸し出しあり"
+    },
+    en: {
+      wordmark_name:"SECOND HOUSE Kyojima",
+      nav_book:"Book on Airbnb",
+      hero_eyebrow:"Kyojima, Sumida City, Tokyo — Entire house",
+      hero_title:"A spacious Japanese house,<br>made for real <em>comfort</em>.",
+      hero_lede:"Rent an entire renovated Japanese house in old-town Kyojima, all to yourselves. Comfortable room for up to 10 guests makes it easy for family and friends to stay together. Reservations are handled entirely through Airbnb.",
+      hero_cta:"Check availability & book ↗",
+      hero_maps_cta:"📍 View map",
+      chip1:"Up to <b>10 guests</b>", chip2:"<b>3 bedrooms</b> · 64 m²", chip3:"<b>8-min walk</b> from Keisei-Hikifune Sta.", chip4:"<b>5.0</b> rating (5 reviews)",
+      about_h2:"A whole house to yourselves — a hideaway in the old town",
+      about_p:"A renovated house tucked into the backstreets of Kyojima. With no shared walls to worry about, it comfortably fits groups and multi-generational families alike. Self check-in means you can start your stay whenever you arrive.",
+      stat1_num:"10", stat1_label:"Max guests (comfortable for 6)",
+      stat2_num:"3", stat2_label:"Bedrooms",
+      stat3_label:"Total floor area",
+      stat4_num:"2", stat4_label:"Shower &amp; toilet sets",
+      beds_h2:"Bed configuration",
+      bed1_label:"Double beds", bed1_val:"5",
+      bed2_label:"Sofa bed", bed2_val:"1",
+      bed3_label:"Shower rooms", bed3_val:"2",
+      bed4_label:"Toilets", bed4_val:"2",
+      beds_note:"Spread across three separate bedrooms, the layout makes it easy for groups to each have their own private space.",
+      amenities_h2:"Amenities",
+      tag1:"Kitchen", tag2:"Workspace", tag3:"TV", tag4:"Washer &amp; dryer", tag5:"Air conditioning", tag6:"Self check-in",
+      amenities_note:"In addition to the above, the Airbnb listing includes 49 amenities in total. Please check the booking page for full details.",
+      access_h2:"An 8-minute walk from Keisei-Hikifune Station — your base for exploring the old town",
+      access_p:"Close to the nearest station and everyday shopping. Well connected to Asakusa, Akihabara and Ginza, with easy access to both Haneda and Narita airports.",
+      route1_t:"2-min walk", route1_d:"Convenience store",
+      route2_t:"6-min walk", route2_d:"Supermarket",
+      route3_t:"8-min walk", route3_d:"Keisei-Hikifune Station",
+      route4_t:"18-min walk", route4_d:"Tokyo Skytree",
+      maps_btn:"📍 Open in Google Maps ↗",
+      host_h2:"About your host",
+      host_years:" · Hosting for 2 years",
+      host_rate:"Response rate 100%", host_speed:"Usually replies within an hour", host_cohost:"Co-host: Nami",
+      host_quote:"“Very spacious and convenient” — from a guest review",
+      host_rating:"5.0 (5 reviews)",
+      gallery_h2:"A look inside, in photos",
+      gallery_p:"Browse all 16 photos to see every corner of the house. Click any photo to view it larger.",
+      final_h2:"Book your stay in Kyojima on Airbnb.",
+      final_p:"Rates and availability vary by date. From checking the calendar to completing your booking, everything is handled safely on Airbnb.",
+      final_cta:"Check availability on Airbnb ↗",
+      footer_line1:"SECOND HOUSE Kyojima — Kyojima, Sumida City, Tokyo (8-min walk from Keisei-Hikifune Sta.)",
+      footer_line2:"Host: Kenta &amp; Nami",
+      footer_map_link:"View on Google Maps ↗",
+      lb_close:"Close", lb_prev:"Previous photo", lb_next:"Next photo",
+      p1:"Dining &amp; kitchen", p2:"Fully equipped kitchen", p3:"Vanity &amp; washer-dryer", p4:"Washlet toilet",
+      p5:"Shower room", p6:"Bright corner bedroom", p7:"Bedroom with a double bed", p8:"Bedroom with closets",
+      p9:"In-room workspace", p10:"Twin beds by the window", p11:"Second toilet with basin", p12:"Toaster oven &amp; microwave",
+      p13:"The house on a Kyojima backstreet", p14:"Keisei-Hikifune Station (8-min walk)", p15:"Baby crib available", p16:"Stroller available to borrow"
+    },
+    zh: {
+      wordmark_name:"SECOND HOUSE 京岛",
+      nav_book:"在Airbnb预订",
+      hero_eyebrow:"东京都墨田区・京岛　整栋独立住宅",
+      hero_title:"宽敞的日式独栋住宅，<br>尽享<em>舒适</em>时光。",
+      hero_lede:"整栋租下位于京岛老城区、经过翻新的日式住宅。最多可容纳10位客人，家人与朋友结伴出游也能舒适入住。预订请通过Airbnb办理。",
+      hero_cta:"查看空房并预订 ↗",
+      hero_maps_cta:"📍 查看地图",
+      chip1:"最多可住<b>10位</b>客人", chip2:"<b>3间卧室</b>・64㎡", chip3:"距京成曳船站步行<b>8分钟</b>", chip4:"评分<b>5.0</b>（5条评价）",
+      about_h2:"整栋独享，隐于老城的秘密居所",
+      about_p:"这是一栋坐落于京岛小巷深处、经过翻新的独栋住宅。无需顾虑隔壁邻居，无论是团体出游还是三代同堂都能从容入住。支持自助办理入住，抵达后即可开始您的旅程。",
+      stat1_num:"10", stat1_label:"最多入住人数（舒适入住6人）",
+      stat2_num:"3", stat2_label:"卧室数量",
+      stat3_label:"总面积",
+      stat4_num:"2", stat4_label:"淋浴间与卫生间",
+      beds_h2:"床铺配置",
+      bed1_label:"双人床", bed1_val:"5张",
+      bed2_label:"沙发床", bed2_val:"1张",
+      bed3_label:"淋浴间", bed3_val:"2处",
+      bed4_label:"卫生间", bed4_val:"2处",
+      beds_note:"卧室分为三间，即便是团体入住也能轻松保有各自的私密空间。",
+      amenities_h2:"设施与设备",
+      tag1:"厨房", tag2:"办公空间", tag3:"电视", tag4:"洗衣机・烘干机", tag5:"空调", tag6:"自助办理入住",
+      amenities_note:"除上述项目外，Airbnb页面共列出49种设施。详情请查看预订页面确认。",
+      access_h2:"距京成曳船站步行8分钟，是探索老城的绝佳据点",
+      access_p:"距离最近车站很近，日常购物也十分便利。前往浅草、秋叶原、银座方向的交通也很顺畅，往返羽田、成田两大机场同样便捷。",
+      route1_t:"步行2分钟", route1_d:"便利店",
+      route2_t:"步行6分钟", route2_d:"超市",
+      route3_t:"步行8分钟", route3_d:"京成曳船站",
+      route4_t:"步行18分钟", route4_d:"东京晴空塔",
+      maps_btn:"📍 在Google地图中查看 ↗",
+      host_h2:"关于房东",
+      host_years:" ・从事房东工作2年",
+      host_rate:"回复率100%", host_speed:"通常1小时内回复", host_cohost:"联合房东：奈美",
+      host_quote:"“非常宽敞便利” —— 来自房客评价",
+      host_rating:"5.0（5条评价）",
+      gallery_h2:"图览室内",
+      gallery_p:"通过全部16张照片，全面了解房间的每一处细节。点击照片即可放大查看。",
+      final_h2:"在京岛的住宿，请通过Airbnb预订。",
+      final_p:"价格与空房情况会因日期而异。从查看日历到完成预订，均可在Airbnb页面安全办理。",
+      final_cta:"前往Airbnb查看空房 ↗",
+      footer_line1:"SECOND HOUSE 京岛 ／ 东京都墨田区京岛（京成曳船站 步行8分钟）",
+      footer_line2:"房东：Kenta・奈美",
+      footer_map_link:"在Google地图查看 ↗",
+      lb_close:"关闭", lb_prev:"上一张", lb_next:"下一张",
+      p1:"餐厅与厨房", p2:"设备齐全的厨房", p3:"洗手台与洗烘一体机", p4:"智能马桶卫生间",
+      p5:"淋浴间", p6:"明亮的转角卧室", p7:"双人床卧室", p8:"带衣柜的卧室",
+      p9:"卧室内的工作区", p10:"靠窗的双床房", p11:"带洗手台的第二卫生间", p12:"烤箱与微波炉",
+      p13:"坐落于京岛小巷的外观", p14:"京成曳船站（步行8分钟）", p15:"备有婴儿床", p16:"提供婴儿车租借"
+    },
+    ko: {
+      wordmark_name:"SECOND HOUSE 교지마",
+      nav_book:"Airbnb에서 예약",
+      hero_eyebrow:"도쿄도 스미다구 교지마 · 독채 주택",
+      hero_title:"널찍한 일본식 단독주택에서,<br><em>편안한</em> 시간을 보내세요.",
+      hero_lede:"교지마 옛 시가지에 자리한, 리모델링을 마친 일본식 주택을 통째로 빌리는 숙소입니다. 최대 10명까지 편안하게 묵을 수 있는 넓은 공간으로 가족, 친구와 함께하기 좋습니다. 예약은 Airbnb를 통해서만 가능합니다.",
+      hero_cta:"공실 확인 후 예약하기 ↗",
+      hero_maps_cta:"📍 지도 보기",
+      chip1:"최대 <b>10명</b> 숙박 가능", chip2:"<b>침실 3개</b> · 64㎡", chip3:"게이세이 히키후네역에서 도보 <b>8분</b>", chip4:"평점 <b>5.0</b> (리뷰 5건)",
+      about_h2:"한 채를 통째로 빌리는, 옛 시가지의 은신처",
+      about_p:"교지마 골목 안쪽에 자리한 리모델링 주택입니다. 벽 하나를 사이에 둔 이웃을 신경 쓸 필요 없이, 단체 여행이나 삼대가 함께하는 가족 여행에도 넉넉한 공간을 제공합니다. 셀프 체크인으로 도착 시간에 구애받지 않고 편하게 여정을 시작하실 수 있습니다.",
+      stat1_num:"10명", stat1_label:"최대 숙박 인원 (쾌적 인원 6명)",
+      stat2_num:"3개", stat2_label:"침실 수",
+      stat3_label:"총 면적",
+      stat4_num:"2개", stat4_label:"샤워실・화장실",
+      beds_h2:"침대 구성",
+      bed1_label:"더블베드", bed1_val:"5개",
+      bed2_label:"소파베드", bed2_val:"1개",
+      bed3_label:"샤워룸", bed3_val:"2개",
+      bed4_label:"화장실", bed4_val:"2개",
+      beds_note:"침실이 3개로 나뉘어 있어 단체로 이용해도 각자의 개인 공간을 확보하기 쉬운 구조입니다.",
+      amenities_h2:"편의시설",
+      tag1:"주방", tag2:"업무 공간", tag3:"TV", tag4:"세탁기・건조기", tag5:"에어컨", tag6:"셀프 체크인",
+      amenities_note:"위 항목 외에도 Airbnb 페이지에는 총 49종의 편의시설이 안내되어 있습니다. 자세한 내용은 예약 페이지에서 확인해 주세요.",
+      access_h2:"게이세이 히키후네역에서 도보 8분, 옛 시가지 산책의 출발점",
+      access_p:"가까운 역과 생필품 쇼핑에도 불편함이 없습니다. 아사쿠사・아키하바라・긴자 방면으로의 접근성도 좋고, 하네다・나리타 두 공항으로의 이동도 편리한 위치입니다.",
+      route1_t:"도보 2분", route1_d:"편의점",
+      route2_t:"도보 6분", route2_d:"슈퍼마켓",
+      route3_t:"도보 8분", route3_d:"게이세이 히키후네역",
+      route4_t:"도보 18분", route4_d:"도쿄 스카이트리",
+      maps_btn:"📍 Google 지도에서 보기 ↗",
+      host_h2:"호스트 소개",
+      host_years:" · 호스팅 경력 2년",
+      host_rate:"응답률 100%", host_speed:"보통 1시간 이내 답장", host_cohost:"공동 호스트: 나미",
+      host_quote:"“매우 넓고 편리해요” — 게스트 리뷰 중",
+      host_rating:"5.0 (리뷰 5건)",
+      gallery_h2:"사진으로 보는 실내",
+      gallery_p:"총 16장의 사진으로 집의 구석구석을 살펴보세요. 사진을 클릭하면 크게 볼 수 있습니다.",
+      final_h2:"교지마에서의 숙박은 Airbnb에서.",
+      final_p:"요금과 공실 여부는 날짜에 따라 달라집니다. 캘린더 확인부터 예약 완료까지 Airbnb 페이지에서 안전하게 진행하실 수 있습니다.",
+      final_cta:"Airbnb에서 공실 확인하기 ↗",
+      footer_line1:"SECOND HOUSE 교지마 ／ 도쿄도 스미다구 교지마 (게이세이 히키후네역 도보 8분)",
+      footer_line2:"호스트: Kenta・나미",
+      footer_map_link:"Google 지도에서 보기 ↗",
+      lb_close:"닫기", lb_prev:"이전 사진", lb_next:"다음 사진",
+      p1:"다이닝 &amp; 주방", p2:"풀옵션 주방", p3:"세면대 &amp; 세탁건조기", p4:"워시렛 화장실",
+      p5:"샤워룸", p6:"밝은 코너 침실", p7:"더블베드 침실", p8:"옷장이 있는 침실",
+      p9:"침실 내 업무 공간", p10:"창가의 트윈 침대", p11:"세면대가 있는 두 번째 화장실", p12:"오븐토스터 &amp; 전자레인지",
+      p13:"교지마 골목에 자리한 외관", p14:"게이세이 히키후네역 (도보 8분)", p15:"아기 침대 구비", p16:"유모차 대여 가능"
+    }
+  };
+
+  var STORAGE_KEY = "shk_lang";
+  var app = document.getElementById("app");
+  var grid = document.getElementById("gallery-grid");
+  var lightbox = document.getElementById("lightbox");
+  var lbImg = document.getElementById("lb-img");
+  var lbCaption = document.getElementById("lb-caption");
+  var currentIndex = 0;
+  var currentLang = "ja";
+
+  function buildGallery(){
+    grid.innerHTML = "";
+    PHOTOS.forEach(function(p, i){
+      var btn = document.createElement("button");
+      btn.className = "gallery-item";
+      btn.type = "button";
+      btn.setAttribute("data-index", i);
+      var img = document.createElement("img");
+      img.src = p.file;
+      img.loading = "lazy";
+      img.alt = "";
+      var cap = document.createElement("span");
+      cap.className = "gallery-cap";
+      cap.setAttribute("data-i18n", p.key);
+      btn.appendChild(img);
+      btn.appendChild(cap);
+      btn.addEventListener("click", function(){ openLightbox(i); });
+      grid.appendChild(btn);
+    });
+  }
+
+  function openLightbox(i){
+    currentIndex = i;
+    updateLightbox();
+    lightbox.hidden = false;
+    document.body.style.overflow = "hidden";
+  }
+  function closeLightbox(){
+    lightbox.hidden = true;
+    document.body.style.overflow = "";
+  }
+  function updateLightbox(){
+    var p = PHOTOS[currentIndex];
+    lbImg.src = p.file;
+    var capText = I18N[currentLang][p.key] || "";
+    lbCaption.textContent = capText;
+    lbImg.alt = capText;
+  }
+  function nextPhoto(){ currentIndex = (currentIndex + 1) % PHOTOS.length; updateLightbox(); }
+  function prevPhoto(){ currentIndex = (currentIndex - 1 + PHOTOS.length) % PHOTOS.length; updateLightbox(); }
+
+  document.getElementById("lb-close").addEventListener("click", closeLightbox);
+  document.getElementById("lb-next").addEventListener("click", nextPhoto);
+  document.getElementById("lb-prev").addEventListener("click", prevPhoto);
+  lightbox.addEventListener("click", function(e){ if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener("keydown", function(e){
+    if (lightbox.hidden) return;
+    if (e.key === "Escape") closeLightbox();
+    if (e.key === "ArrowRight") nextPhoto();
+    if (e.key === "ArrowLeft") prevPhoto();
+  });
+
+  function applyLang(lang){
+    currentLang = lang;
+    app.setAttribute("data-lang", lang);
+    var dict = I18N[lang];
+    document.querySelectorAll("[data-i18n]").forEach(function(el){
+      var key = el.getAttribute("data-i18n");
+      if (dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+    document.querySelectorAll(".langbtn").forEach(function(b){
+      b.setAttribute("aria-pressed", b.getAttribute("data-setlang") === lang ? "true" : "false");
+    });
+    if (!lightbox.hidden) updateLightbox();
+    try { localStorage.setItem(STORAGE_KEY, lang); } catch(e){}
+  }
+
+  document.querySelectorAll(".langbtn").forEach(function(b){
+    b.addEventListener("click", function(){ applyLang(b.getAttribute("data-setlang")); });
+  });
+
+  buildGallery();
+
+  var initial = "ja";
+  try {
+    var saved = localStorage.getItem(STORAGE_KEY);
+    if (saved && I18N[saved]) {
+      initial = saved;
+    } else {
+      var nl = (navigator.language || "ja").toLowerCase();
+      if (nl.indexOf("zh") === 0) initial = "zh";
+      else if (nl.indexOf("ko") === 0) initial = "ko";
+      else if (nl.indexOf("en") === 0) initial = "en";
+      else if (nl.indexOf("ja") === 0) initial = "ja";
+      else initial = "en";
+    }
+  } catch(e){}
+  applyLang(initial);
+})();
+</script>
