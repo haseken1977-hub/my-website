@@ -314,6 +314,36 @@
   }
   .host-meta{font-size:13.5px;color:var(--text-soft);display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;}
   .stars{color:var(--accent-deep);letter-spacing:2px;font-size:15px;}
+  .badge{
+    display:inline-block;margin-left:10px;padding:2px 10px;border-radius:999px;
+    background:var(--accent);color:#fff9f0;font-size:11.5px;font-weight:700;
+    letter-spacing:.04em;vertical-align:middle;
+  }
+  .rating-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:20px;
+    background:var(--border);border:1px solid var(--border);border-radius:14px;overflow:hidden;
+  }
+  @media (max-width:640px){.rating-grid{grid-template-columns:repeat(2,1fr);}}
+  .rating-item{
+    background:var(--bg-raised);padding:14px 18px;font-size:13px;color:var(--text-soft);
+    display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  }
+  .rating-item b{color:var(--accent-deep);font-size:17px;font-variant-numeric:tabular-nums;}
+  .notes-card{
+    margin-top:20px;padding:20px 24px;border:1px solid var(--border);border-radius:14px;
+    background:var(--bg-raised);
+  }
+  .notes-title{font-weight:700;font-size:14.5px;margin-bottom:8px;}
+  .notes-card ul{margin:0;padding-left:20px;font-size:13.5px;color:var(--text-soft);}
+  .notes-card li{margin:4px 0;}
+  .plan-card{
+    display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:20px;
+    background:var(--border);border:1px solid var(--border);border-radius:14px;overflow:hidden;
+  }
+  @media (max-width:720px){.plan-card{grid-template-columns:1fr;}}
+  .plan-floor{background:var(--bg-raised);padding:18px 20px;}
+  .plan-floor p{margin:6px 0 0;font-size:13.5px;color:var(--text-soft);}
+  .plan-label{font-weight:700;font-family:var(--font-display);color:var(--accent-deep);font-size:15px;}
   blockquote{
     margin:22px 0 0;padding:18px 20px;border-left:3px solid var(--accent);
     background:var(--bg-raised);border-radius:0 10px 10px 0;
@@ -426,7 +456,7 @@
   <span class="chip"><span class="dot"></span><span data-i18n="chip1">最大<b>10名</b>まで宿泊可</span></span>
   <span class="chip"><span class="dot"></span><span data-i18n="chip2">寝室<b>3室</b>・64㎡</span></span>
   <span class="chip"><span class="dot"></span><span data-i18n="chip3">京成曳舟駅から徒歩<b>8分</b></span></span>
-  <span class="chip"><span class="dot"></span><span data-i18n="chip4">評価<b>5.0</b>（レビュー5件）</span></span>
+  <span class="chip"><span class="dot"></span><span data-i18n="chip4">評価<b>4.93</b>（レビュー15件）</span></span>
 </div>
 
 <main>
@@ -434,13 +464,17 @@
     <div class="section-head">
       <div class="eyebrow"><span class="seal">棲</span>ABOUT THE HOUSE</div>
       <h2 data-i18n="about_h2">一棟をまるごと貸し切る、下町の隠れ家</h2>
-      <p data-i18n="about_p">京島の路地裏に建つ一軒家をリノベーションした宿。壁一枚隔てて誰かに気を使うことなく、グループや三世代家族でもゆったり過ごせる広さを備えています。セルフチェックイン対応で、到着時間を気にせず滞在をスタートできます。</p>
+      <p data-i18n="about_p">京島の静かな住宅街に建つ、落ち着いた雰囲気の2階建て一軒家をリフォームした宿。壁一枚隔てて誰かに気を使うことなく、グループや三世代家族でもゆったり過ごせる広さを備えています。セルフチェックイン対応で、到着時間を気にせず滞在をスタートできます。</p>
     </div>
     <div class="stat-grid">
       <div class="stat"><div class="num" data-i18n="stat1_num">10名</div><div class="label" data-i18n="stat1_label">最大宿泊人数（快適人数6名）</div></div>
       <div class="stat"><div class="num" data-i18n="stat2_num">3室</div><div class="label" data-i18n="stat2_label">寝室数</div></div>
       <div class="stat"><div class="num">64㎡</div><div class="label" data-i18n="stat3_label">総面積</div></div>
       <div class="stat"><div class="num" data-i18n="stat4_num">2組</div><div class="label" data-i18n="stat4_label">シャワー・トイレ</div></div>
+    </div>
+    <div class="plan-card">
+      <div class="plan-floor"><div class="plan-label" data-i18n="plan_f1">1階</div><p data-i18n="plan_f1_t">玄関・洋室（約5.0帖）・リビングダイニング（約6.0帖）・キッチン・シャワー室・洗面所・トイレ</p></div>
+      <div class="plan-floor"><div class="plan-label" data-i18n="plan_f2">2階</div><p data-i18n="plan_f2_t">洋室（約8.0帖）・洋室（約10.0帖）・シャワー室・トイレ</p></div>
     </div>
   </section>
 
@@ -452,8 +486,9 @@
           <h2 data-i18n="beds_h2">ベッド構成</h2>
         </div>
         <ul class="list-plain">
-          <li><span data-i18n="bed1_label">ダブルベッド</span><span data-i18n="bed1_val">5台</span></li>
-          <li><span data-i18n="bed2_label">ソファーベッド</span><span data-i18n="bed2_val">1台</span></li>
+          <li><span data-i18n="bed1_label">寝室1</span><span data-i18n="bed1_val">ダブルベッド2台</span></li>
+          <li><span data-i18n="bed2_label">寝室2</span><span data-i18n="bed2_val">ダブルベッド2台</span></li>
+          <li><span data-i18n="bed5_label">寝室3</span><span data-i18n="bed5_val">ダブルベッド1台・ソファーベッド1台</span></li>
           <li><span data-i18n="bed3_label">シャワールーム</span><span data-i18n="bed3_val">2箇所</span></li>
           <li><span data-i18n="bed4_label">トイレ</span><span data-i18n="bed4_val">2箇所</span></li>
         </ul>
@@ -472,8 +507,12 @@
           <span class="tag" data-i18n="tag4">洗濯機・乾燥機</span>
           <span class="tag" data-i18n="tag5">エアコン</span>
           <span class="tag" data-i18n="tag6">セルフチェックイン</span>
+          <span class="tag" data-i18n="tag7">ベビーベッド・ベビーカー・ベビーチェア（無料）</span>
+          <span class="tag" data-i18n="tag8">ボードゲーム</span>
+          <span class="tag" data-i18n="tag9">コーヒー抽出器具</span>
+          <span class="tag" data-i18n="tag10">公園の眺め</span>
         </div>
-        <p class="note-line" data-i18n="amenities_note">上記のほか、Airbnb掲載ページには全49種類のアメニティが記載されています。詳細は予約ページでご確認ください。</p>
+        <p class="note-line" data-i18n="amenities_note">上記のほか、Airbnb掲載ページには全50種類のアメニティ・設備が記載されています。詳細は予約ページでご確認ください。</p>
       </div>
     </div>
   </section>
@@ -482,7 +521,7 @@
     <div class="section-head">
       <div class="eyebrow"><span class="seal">道</span>ACCESS</div>
       <h2 data-i18n="access_h2">京成曳舟駅から徒歩8分、<br>下町散歩の起点に</h2>
-      <p data-i18n="access_p">最寄り駅から近く、日用品の買い物にも困りません。浅草・秋葉原・銀座方面へのアクセスもよく、羽田・成田両空港への移動もしやすい立地です。</p>
+      <p data-i18n="access_p">京成曳舟駅まで徒歩約8分、小村井駅も近く、押上駅・東京スカイツリータウン駅へは約900m。コンビニ・スーパーも近く、日用品の買い物にも困りません。浅草・秋葉原・銀座・上野・東京駅方面へのアクセスもよく、成田・羽田両空港からも便利な立地です。</p>
     </div>
     <div class="route">
       <div class="route-step"><div class="t" data-i18n="route1_t">徒歩2分</div><div class="d" data-i18n="route1_d">コンビニエンスストア</div></div>
@@ -490,6 +529,7 @@
       <div class="route-step"><div class="t" data-i18n="route3_t">徒歩8分</div><div class="d" data-i18n="route3_d">京成曳舟駅</div></div>
       <div class="route-step"><div class="t" data-i18n="route4_t">徒歩18分</div><div class="d" data-i18n="route4_d">東京スカイツリー</div></div>
     </div>
+    <p class="note-line" data-i18n="access_nearby">周辺：キラキラ橘商店街・電気湯（約400m）・東京ソラマチ・すみだ水族館（徒歩圏）</p>
 
     <div class="map-card">
       <svg class="mini-map" viewBox="0 0 420 160" role="img" aria-label="Illustrated walking route from the house to the convenience store, supermarket, station and Tokyo Skytree">
@@ -524,17 +564,34 @@
       <div class="host-card">
         <div class="avatar">健</div>
         <div>
-          <div style="font-weight:700;font-size:16px;">Kenta<span style="font-weight:400;color:var(--text-soft);font-size:13.5px;" data-i18n="host_years"> ・ ホスティング歴2年</span></div>
+          <div style="font-weight:700;font-size:16px;">Kenta<span class="badge" data-i18n="host_super">スーパーホスト</span><span style="font-weight:400;color:var(--text-soft);font-size:13.5px;" data-i18n="host_years"> ・ ホスティング歴2年</span></div>
           <div class="host-meta">
             <span data-i18n="host_rate">返信率 100%</span>
             <span>・</span>
             <span data-i18n="host_speed">通常1時間以内に返信</span>
             <span>・</span>
             <span data-i18n="host_cohost">補助ホスト：奈美</span>
+            <span>・</span>
+            <span data-i18n="host_lang">対応言語：日本語</span>
           </div>
-          <blockquote data-i18n="host_quote">「大変広くて便利」 — ゲストレビューより</blockquote>
-          <div style="margin-top:14px;" class="stars" aria-label="5.0 rating, 5 reviews">★★★★★ <span style="color:var(--text-soft);font-size:13.5px;" data-i18n="host_rating">5.0（レビュー5件）</span></div>
+          <div style="margin-top:14px;" class="stars" aria-label="4.93 rating, 15 reviews">★★★★★ <span style="color:var(--text-soft);font-size:13.5px;" data-i18n="host_rating">4.93（レビュー15件）</span></div>
         </div>
+      </div>
+      <div class="rating-grid">
+        <div class="rating-item"><span data-i18n="rate_clean">清潔さ</span><b>5.0</b></div>
+        <div class="rating-item"><span data-i18n="rate_accuracy">情報の正確さ</span><b>4.9</b></div>
+        <div class="rating-item"><span data-i18n="rate_checkin">チェックイン</span><b>5.0</b></div>
+        <div class="rating-item"><span data-i18n="rate_comm">コミュニケーション</span><b>5.0</b></div>
+        <div class="rating-item"><span data-i18n="rate_location">ロケーション</span><b>4.7</b></div>
+        <div class="rating-item"><span data-i18n="rate_value">価格</span><b>4.9</b></div>
+      </div>
+      <div class="notes-card">
+        <div class="notes-title" data-i18n="notes_h">ご利用にあたって</div>
+        <ul>
+          <li data-i18n="note1">全館禁煙です（室内・敷地内とも喫煙不可）。</li>
+          <li data-i18n="note2">閑静な住宅街のため、夜間・早朝は静かにお過ごしください。近隣に乳幼児のいるご家庭があります。</li>
+          <li data-i18n="note3">屋外・出入口に防犯カメラがあります。</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -561,7 +618,7 @@
 
 <footer>
   <div class="wrap">
-    <div><span data-i18n="footer_line1">SECOND HOUSE 京島 ／ 東京都墨田区京島（京成曳舟駅 徒歩8分）</span><br><span data-i18n="footer_line2">ホスト：Kenta・奈美</span></div>
+    <div><span data-i18n="footer_line1">SECOND HOUSE 京島 ／ 東京都墨田区京島（京成曳舟駅 徒歩8分）</span><br><span data-i18n="footer_line2">ホスト：Kenta・奈美</span><br><span data-i18n="footer_license">旅館業法許可｜墨田区保健所｜7墨衛生環第1011号</span></div>
     <div>
       <a href="https://airbnb.jp/h/secondhousekyojima" target="_blank" rel="noopener">airbnb.jp/h/secondhousekyojima</a><br>
       <a href="https://maps.app.goo.gl/euxs78Ycq13obsQ67" target="_blank" rel="noopener" data-i18n="footer_map_link">Googleマップで見る ↗</a>
@@ -615,24 +672,29 @@
       hero_lede:"京島の下町に建つ、リノベーション済みの日本家屋を丸ごと貸し切り。最大10名までゆったり泊まれる広さで、家族や友人との滞在も快適に。予約はAirbnbから承っています。",
       hero_cta:"空室状況を見て予約する ↗",
       hero_maps_cta:"📍 地図を見る",
-      chip1:"最大<b>10名</b>まで宿泊可", chip2:"寝室<b>3室</b>・64㎡", chip3:"京成曳舟駅から徒歩<b>8分</b>", chip4:"評価<b>5.0</b>（レビュー5件）",
+      chip1:"最大<b>10名</b>まで宿泊可", chip2:"寝室<b>3室</b>・64㎡", chip3:"京成曳舟駅から徒歩<b>8分</b>", chip4:"評価<b>4.93</b>（レビュー15件）",
       about_h2:"一棟をまるごと貸し切る、下町の隠れ家",
-      about_p:"京島の路地裏に建つ一軒家をリノベーションした宿。壁一枚隔てて誰かに気を使うことなく、グループや三世代家族でもゆったり過ごせる広さを備えています。セルフチェックイン対応で、到着時間を気にせず滞在をスタートできます。",
+      about_p:"京島の静かな住宅街に建つ、落ち着いた雰囲気の2階建て一軒家をリフォームした宿。壁一枚隔てて誰かに気を使うことなく、グループや三世代家族でもゆったり過ごせる広さを備えています。セルフチェックイン対応で、到着時間を気にせず滞在をスタートできます。",
       stat1_num:"10名", stat1_label:"最大宿泊人数（快適人数6名）",
       stat2_num:"3室", stat2_label:"寝室数",
       stat3_label:"総面積",
       stat4_num:"2組", stat4_label:"シャワー・トイレ",
       beds_h2:"ベッド構成",
-      bed1_label:"ダブルベッド", bed1_val:"5台",
-      bed2_label:"ソファーベッド", bed2_val:"1台",
+      bed1_label:"寝室1", bed1_val:"ダブルベッド2台",
+      bed2_label:"寝室2", bed2_val:"ダブルベッド2台",
+      bed5_label:"寝室3", bed5_val:"ダブルベッド1台・ソファーベッド1台",
+      plan_f1:"1階", plan_f1_t:"玄関・洋室（約5.0帖）・リビングダイニング（約6.0帖）・キッチン・シャワー室・洗面所・トイレ",
+      plan_f2:"2階", plan_f2_t:"洋室（約8.0帖）・洋室（約10.0帖）・シャワー室・トイレ",
       bed3_label:"シャワールーム", bed3_val:"2箇所",
       bed4_label:"トイレ", bed4_val:"2箇所",
       beds_note:"寝室は3室に分かれており、グループ利用でもプライベート空間を確保しやすい間取りです。",
       amenities_h2:"設備・アメニティ",
       tag1:"キッチン", tag2:"仕事用スペース", tag3:"テレビ", tag4:"洗濯機・乾燥機", tag5:"エアコン", tag6:"セルフチェックイン",
-      amenities_note:"上記のほか、Airbnb掲載ページには全49種類のアメニティが記載されています。詳細は予約ページでご確認ください。",
+      tag7:"ベビーベッド・ベビーカー・ベビーチェア（無料）", tag8:"ボードゲーム", tag9:"コーヒー抽出器具", tag10:"公園の眺め",
+      amenities_note:"上記のほか、Airbnb掲載ページには全50種類のアメニティ・設備が記載されています。詳細は予約ページでご確認ください。",
       access_h2:"京成曳舟駅から徒歩8分、<br>下町散歩の起点に",
-      access_p:"最寄り駅から近く、日用品の買い物にも困りません。浅草・秋葉原・銀座方面へのアクセスもよく、羽田・成田両空港への移動もしやすい立地です。",
+      access_p:"京成曳舟駅まで徒歩約8分、小村井駅も近く、押上駅・東京スカイツリータウン駅へは約900m。コンビニ・スーパーも近く、日用品の買い物にも困りません。浅草・秋葉原・銀座・上野・東京駅方面へのアクセスもよく、成田・羽田両空港からも便利な立地です。",
+      access_nearby:"周辺：キラキラ橘商店街・電気湯（約400m）・東京ソラマチ・すみだ水族館（徒歩圏）",
       route1_t:"徒歩2分", route1_d:"コンビニエンスストア",
       route2_t:"徒歩6分", route2_d:"スーパーマーケット",
       route3_t:"徒歩8分", route3_d:"京成曳舟駅",
@@ -641,8 +703,13 @@
       host_h2:"ホストについて",
       host_years:" ・ ホスティング歴2年",
       host_rate:"返信率 100%", host_speed:"通常1時間以内に返信", host_cohost:"補助ホスト：奈美",
-      host_quote:"「大変広くて便利」 — ゲストレビューより",
-      host_rating:"5.0（レビュー5件）",
+      host_super:"スーパーホスト", host_lang:"対応言語：日本語",
+      host_rating:"4.93（レビュー15件）",
+      rate_clean:"清潔さ", rate_accuracy:"情報の正確さ", rate_checkin:"チェックイン", rate_comm:"コミュニケーション", rate_location:"ロケーション", rate_value:"価格",
+      notes_h:"ご利用にあたって",
+      note1:"全館禁煙です（室内・敷地内とも喫煙不可）。",
+      note2:"閑静な住宅街のため、夜間・早朝は静かにお過ごしください。近隣に乳幼児のいるご家庭があります。",
+      note3:"屋外・出入口に防犯カメラがあります。",
       gallery_h2:"写真でみる室内",
       gallery_p:"全20点の写真で、部屋の隅々までご覧いただけます。写真をクリックすると拡大表示されます。",
       final_h2:"京島での滞在は、Airbnbから。",
@@ -650,6 +717,7 @@
       final_cta:"Airbnbで空室を確認する ↗",
       footer_line1:"SECOND HOUSE 京島 ／ 東京都墨田区京島（京成曳舟駅 徒歩8分）",
       footer_line2:"ホスト：Kenta・奈美",
+      footer_license:"旅館業法許可｜墨田区保健所｜7墨衛生環第1011号",
       footer_map_link:"Googleマップで見る ↗",
       lb_close:"閉じる", lb_prev:"前の写真", lb_next:"次の写真",
       p1:"ダイニング＆キッチン", p2:"フル装備のキッチン", p3:"洗面台と洗濯乾燥機", p4:"ウォシュレット付きトイレ",
@@ -666,24 +734,29 @@
       hero_lede:"Rent an entire renovated Japanese house in old-town Kyojima, all to yourselves. Comfortable room for up to 10 guests makes it easy for family and friends to stay together. Reservations are handled entirely through Airbnb.",
       hero_cta:"Check availability & book ↗",
       hero_maps_cta:"📍 View map",
-      chip1:"Up to <b>10 guests</b>", chip2:"<b>3 bedrooms</b> · 64 m²", chip3:"<b>8-min walk</b> from Keisei-Hikifune Sta.", chip4:"<b>5.0</b> rating (5 reviews)",
+      chip1:"Up to <b>10 guests</b>", chip2:"<b>3 bedrooms</b> · 64 m²", chip3:"<b>8-min walk</b> from Keisei-Hikifune Sta.", chip4:"<b>4.93</b> rating (15 reviews)",
       about_h2:"A whole house to yourselves — a hideaway in the old town",
-      about_p:"A renovated house tucked into the backstreets of Kyojima. With no shared walls to worry about, it comfortably fits groups and multi-generational families alike. Self check-in means you can start your stay whenever you arrive.",
+      about_p:"A renovated, calm two-story house in a quiet residential area of Kyojima. With no shared walls to worry about, it comfortably fits groups and multi-generational families alike. Self check-in means you can start your stay whenever you arrive.",
       stat1_num:"10", stat1_label:"Max guests (comfortable for 6)",
       stat2_num:"3", stat2_label:"Bedrooms",
       stat3_label:"Total floor area",
       stat4_num:"2", stat4_label:"Shower &amp; toilet sets",
       beds_h2:"Bed configuration",
-      bed1_label:"Double beds", bed1_val:"5",
-      bed2_label:"Sofa bed", bed2_val:"1",
+      bed1_label:"Bedroom 1", bed1_val:"2 double beds",
+      bed2_label:"Bedroom 2", bed2_val:"2 double beds",
+      bed5_label:"Bedroom 3", bed5_val:"1 double bed + 1 sofa bed",
+      plan_f1:"1st floor", plan_f1_t:"Entrance · Western-style room (approx. 5.0 tatami) · Living &amp; dining (approx. 6.0 tatami) · Kitchen · Shower room · Washroom · Toilet",
+      plan_f2:"2nd floor", plan_f2_t:"Western-style room (approx. 8.0 tatami) · Western-style room (approx. 10.0 tatami) · Shower room · Toilet",
       bed3_label:"Shower rooms", bed3_val:"2",
       bed4_label:"Toilets", bed4_val:"2",
       beds_note:"Spread across three separate bedrooms, the layout makes it easy for groups to each have their own private space.",
       amenities_h2:"Amenities",
       tag1:"Kitchen", tag2:"Workspace", tag3:"TV", tag4:"Washer &amp; dryer", tag5:"Air conditioning", tag6:"Self check-in",
-      amenities_note:"In addition to the above, the Airbnb listing includes 49 amenities in total. Please check the booking page for full details.",
+      tag7:"Baby crib, stroller &amp; high chair (free)", tag8:"Board games", tag9:"Coffee brewing equipment", tag10:"Park view",
+      amenities_note:"In addition to the above, the Airbnb listing includes 50 amenities and features in total. Please check the booking page for full details.",
       access_h2:"An 8-minute walk from Keisei-Hikifune Station — your base for exploring the old town",
-      access_p:"Close to the nearest station and everyday shopping. Well connected to Asakusa, Akihabara and Ginza, with easy access to both Haneda and Narita airports.",
+      access_p:"About an 8-minute walk to Keisei-Hikifune Station, with Omurai Station nearby and Oshiage / Tokyo Skytree Town stations about 900 m away. A convenience store and supermarket are close, so daily shopping is easy. Well connected to Asakusa, Akihabara, Ginza, Ueno and Tokyo Station, and convenient from both Narita and Haneda airports.",
+      access_nearby:"Nearby: Kirakira Tachibana shopping street · Denkiyu (about 400 m) · Tokyo Solamachi · Sumida Aquarium (walking distance)",
       route1_t:"2-min walk", route1_d:"Convenience store",
       route2_t:"6-min walk", route2_d:"Supermarket",
       route3_t:"8-min walk", route3_d:"Keisei-Hikifune Station",
@@ -692,8 +765,13 @@
       host_h2:"About your host",
       host_years:" · Hosting for 2 years",
       host_rate:"Response rate 100%", host_speed:"Usually replies within an hour", host_cohost:"Co-host: Nami",
-      host_quote:"“Very spacious and convenient” — from a guest review",
-      host_rating:"5.0 (5 reviews)",
+      host_super:"Superhost", host_lang:"Language: Japanese",
+      host_rating:"4.93 (15 reviews)",
+      rate_clean:"Cleanliness", rate_accuracy:"Accuracy", rate_checkin:"Check-in", rate_comm:"Communication", rate_location:"Location", rate_value:"Value",
+      notes_h:"Good to know",
+      note1:"The entire house is non-smoking (no smoking indoors or on the premises).",
+      note2:"This is a quiet residential neighborhood — please keep noise down at night and in the early morning. Families with infants and small children live nearby.",
+      note3:"Security cameras are installed outdoors and at the entrance.",
       gallery_h2:"A look inside, in photos",
       gallery_p:"Browse all 20 photos to see every corner of the house. Click any photo to view it larger.",
       final_h2:"Book your stay in Kyojima on Airbnb.",
@@ -701,6 +779,7 @@
       final_cta:"Check availability on Airbnb ↗",
       footer_line1:"SECOND HOUSE Kyojima — Kyojima, Sumida City, Tokyo (8-min walk from Keisei-Hikifune Sta.)",
       footer_line2:"Host: Kenta &amp; Nami",
+      footer_license:"Licensed under the Hotel Business Act | Sumida City Health Center | No. 7墨衛生環第1011号",
       footer_map_link:"View on Google Maps ↗",
       lb_close:"Close", lb_prev:"Previous photo", lb_next:"Next photo",
       p1:"Dining &amp; kitchen", p2:"Fully equipped kitchen", p3:"Vanity &amp; washer-dryer", p4:"Washlet toilet",
@@ -717,24 +796,29 @@
       hero_lede:"整栋租下位于京岛老城区、经过翻新的日式住宅。最多可容纳10位客人，家人与朋友结伴出游也能舒适入住。预订请通过Airbnb办理。",
       hero_cta:"查看空房并预订 ↗",
       hero_maps_cta:"📍 查看地图",
-      chip1:"最多可住<b>10位</b>客人", chip2:"<b>3间卧室</b>・64㎡", chip3:"距京成曳船站步行<b>8分钟</b>", chip4:"评分<b>5.0</b>（5条评价）",
+      chip1:"最多可住<b>10位</b>客人", chip2:"<b>3间卧室</b>・64㎡", chip3:"距京成曳船站步行<b>8分钟</b>", chip4:"评分<b>4.93</b>（15条评价）",
       about_h2:"整栋独享，隐于老城的秘密居所",
-      about_p:"这是一栋坐落于京岛小巷深处、经过翻新的独栋住宅。无需顾虑隔壁邻居，无论是团体出游还是三代同堂都能从容入住。支持自助办理入住，抵达后即可开始您的旅程。",
+      about_p:"这是一栋坐落于京岛安静住宅区、氛围沉稳、经过翻新的两层独栋住宅。无需顾虑隔壁邻居，无论是团体出游还是三代同堂都能从容入住。支持自助办理入住，抵达后即可开始您的旅程。",
       stat1_num:"10", stat1_label:"最多入住人数（舒适入住6人）",
       stat2_num:"3", stat2_label:"卧室数量",
       stat3_label:"总面积",
       stat4_num:"2", stat4_label:"淋浴间与卫生间",
       beds_h2:"床铺配置",
-      bed1_label:"双人床", bed1_val:"5张",
-      bed2_label:"沙发床", bed2_val:"1张",
+      bed1_label:"卧室1", bed1_val:"2张双人床",
+      bed2_label:"卧室2", bed2_val:"2张双人床",
+      bed5_label:"卧室3", bed5_val:"1张双人床・1张沙发床",
+      plan_f1:"1楼", plan_f1_t:"玄关・西式房间（约5.0榻榻米）・客餐厅（约6.0榻榻米）・厨房・淋浴间・盥洗室・卫生间",
+      plan_f2:"2楼", plan_f2_t:"西式房间（约8.0榻榻米）・西式房间（约10.0榻榻米）・淋浴间・卫生间",
       bed3_label:"淋浴间", bed3_val:"2处",
       bed4_label:"卫生间", bed4_val:"2处",
       beds_note:"卧室分为三间，即便是团体入住也能轻松保有各自的私密空间。",
       amenities_h2:"设施与设备",
       tag1:"厨房", tag2:"办公空间", tag3:"电视", tag4:"洗衣机・烘干机", tag5:"空调", tag6:"自助办理入住",
-      amenities_note:"除上述项目外，Airbnb页面共列出49种设施。详情请查看预订页面确认。",
+      tag7:"婴儿床・婴儿车・婴儿餐椅（免费）", tag8:"桌游", tag9:"咖啡冲泡器具", tag10:"公园景观",
+      amenities_note:"除上述项目外，Airbnb页面共列出50种设施与设备。详情请查看预订页面确认。",
       access_h2:"距京成曳船站步行8分钟，是探索老城的绝佳据点",
-      access_p:"距离最近车站很近，日常购物也十分便利。前往浅草、秋叶原、银座方向的交通也很顺畅，往返羽田、成田两大机场同样便捷。",
+      access_p:"步行约8分钟可达京成曳船站，小村井站也很近，距押上站、东京晴空塔站约900米。便利店和超市就在附近，日常购物也十分便利。前往浅草、秋叶原、银座、上野、东京站方向的交通也很顺畅，往返成田、羽田两大机场同样便捷。",
+      access_nearby:"周边：Kirakira橘商店街・电气汤（约400米）・东京Solamachi・墨田水族馆（步行可达）",
       route1_t:"步行2分钟", route1_d:"便利店",
       route2_t:"步行6分钟", route2_d:"超市",
       route3_t:"步行8分钟", route3_d:"京成曳船站",
@@ -743,8 +827,13 @@
       host_h2:"关于房东",
       host_years:" ・从事房东工作2年",
       host_rate:"回复率100%", host_speed:"通常1小时内回复", host_cohost:"联合房东：奈美",
-      host_quote:"“非常宽敞便利” —— 来自房客评价",
-      host_rating:"5.0（5条评价）",
+      host_super:"超赞房东", host_lang:"沟通语言：日语",
+      host_rating:"4.93（15条评价）",
+      rate_clean:"清洁度", rate_accuracy:"描述准确度", rate_checkin:"入住", rate_comm:"沟通", rate_location:"位置", rate_value:"性价比",
+      notes_h:"入住须知",
+      note1:"全屋禁烟（室内及院内均不可吸烟）。",
+      note2:"此处为安静的住宅区，夜间和清晨请保持安静。附近住有带婴幼儿的家庭。",
+      note3:"室外及出入口设有监控摄像头。",
       gallery_h2:"图览室内",
       gallery_p:"通过全部20张照片，全面了解房间的每一处细节。点击照片即可放大查看。",
       final_h2:"在京岛的住宿，请通过Airbnb预订。",
@@ -752,6 +841,7 @@
       final_cta:"前往Airbnb查看空房 ↗",
       footer_line1:"SECOND HOUSE 京岛 ／ 东京都墨田区京岛（京成曳船站 步行8分钟）",
       footer_line2:"房东：Kenta・奈美",
+      footer_license:"旅馆业法许可｜墨田区保健所｜7墨衛生環第1011号",
       footer_map_link:"在Google地图查看 ↗",
       lb_close:"关闭", lb_prev:"上一张", lb_next:"下一张",
       p1:"餐厅与厨房", p2:"设备齐全的厨房", p3:"洗手台与洗烘一体机", p4:"智能马桶卫生间",
@@ -768,24 +858,29 @@
       hero_lede:"교지마 옛 시가지에 자리한, 리모델링을 마친 일본식 주택을 통째로 빌리는 숙소입니다. 최대 10명까지 편안하게 묵을 수 있는 넓은 공간으로 가족, 친구와 함께하기 좋습니다. 예약은 Airbnb를 통해서만 가능합니다.",
       hero_cta:"공실 확인 후 예약하기 ↗",
       hero_maps_cta:"📍 지도 보기",
-      chip1:"최대 <b>10명</b> 숙박 가능", chip2:"<b>침실 3개</b> · 64㎡", chip3:"게이세이 히키후네역에서 도보 <b>8분</b>", chip4:"평점 <b>5.0</b> (리뷰 5건)",
+      chip1:"최대 <b>10명</b> 숙박 가능", chip2:"<b>침실 3개</b> · 64㎡", chip3:"게이세이 히키후네역에서 도보 <b>8분</b>", chip4:"평점 <b>4.93</b> (리뷰 15건)",
       about_h2:"한 채를 통째로 빌리는, 옛 시가지의 은신처",
-      about_p:"교지마 골목 안쪽에 자리한 리모델링 주택입니다. 벽 하나를 사이에 둔 이웃을 신경 쓸 필요 없이, 단체 여행이나 삼대가 함께하는 가족 여행에도 넉넉한 공간을 제공합니다. 셀프 체크인으로 도착 시간에 구애받지 않고 편하게 여정을 시작하실 수 있습니다.",
+      about_p:"교지마의 조용한 주택가에 자리한, 차분한 분위기의 2층 단독주택을 리모델링한 숙소입니다. 벽 하나를 사이에 둔 이웃을 신경 쓸 필요 없이, 단체 여행이나 삼대가 함께하는 가족 여행에도 넉넉한 공간을 제공합니다. 셀프 체크인으로 도착 시간에 구애받지 않고 편하게 여정을 시작하실 수 있습니다.",
       stat1_num:"10명", stat1_label:"최대 숙박 인원 (쾌적 인원 6명)",
       stat2_num:"3개", stat2_label:"침실 수",
       stat3_label:"총 면적",
       stat4_num:"2개", stat4_label:"샤워실・화장실",
       beds_h2:"침대 구성",
-      bed1_label:"더블베드", bed1_val:"5개",
-      bed2_label:"소파베드", bed2_val:"1개",
+      bed1_label:"침실 1", bed1_val:"더블베드 2개",
+      bed2_label:"침실 2", bed2_val:"더블베드 2개",
+      bed5_label:"침실 3", bed5_val:"더블베드 1개 · 소파베드 1개",
+      plan_f1:"1층", plan_f1_t:"현관 · 양실(약 5.0조) · 거실 겸 다이닝(약 6.0조) · 주방 · 샤워실 · 세면실 · 화장실",
+      plan_f2:"2층", plan_f2_t:"양실(약 8.0조) · 양실(약 10.0조) · 샤워실 · 화장실",
       bed3_label:"샤워룸", bed3_val:"2개",
       bed4_label:"화장실", bed4_val:"2개",
       beds_note:"침실이 3개로 나뉘어 있어 단체로 이용해도 각자의 개인 공간을 확보하기 쉬운 구조입니다.",
       amenities_h2:"편의시설",
       tag1:"주방", tag2:"업무 공간", tag3:"TV", tag4:"세탁기・건조기", tag5:"에어컨", tag6:"셀프 체크인",
-      amenities_note:"위 항목 외에도 Airbnb 페이지에는 총 49종의 편의시설이 안내되어 있습니다. 자세한 내용은 예약 페이지에서 확인해 주세요.",
+      tag7:"아기 침대 · 유모차 · 아기 의자 (무료)", tag8:"보드게임", tag9:"커피 추출 도구", tag10:"공원 전망",
+      amenities_note:"위 항목 외에도 Airbnb 페이지에는 총 50종의 편의시설·설비가 안내되어 있습니다. 자세한 내용은 예약 페이지에서 확인해 주세요.",
       access_h2:"게이세이 히키후네역에서 도보 8분, 옛 시가지 산책의 출발점",
-      access_p:"가까운 역과 생필품 쇼핑에도 불편함이 없습니다. 아사쿠사・아키하바라・긴자 방면으로의 접근성도 좋고, 하네다・나리타 두 공항으로의 이동도 편리한 위치입니다.",
+      access_p:"게이세이 히키후네역까지 도보 약 8분, 고무라이역도 가깝고 오시아게역·도쿄 스카이트리타운역까지는 약 900m입니다. 편의점과 슈퍼마켓이 가까워 생필품 쇼핑에도 불편함이 없습니다. 아사쿠사・아키하바라・긴자・우에노・도쿄역 방면으로의 접근성도 좋고, 나리타・하네다 두 공항에서도 편리한 위치입니다.",
+      access_nearby:"주변: 키라키라 다치바나 상점가 · 덴키유(약 400m) · 도쿄 소라마치 · 스미다 수족관 (도보권)",
       route1_t:"도보 2분", route1_d:"편의점",
       route2_t:"도보 6분", route2_d:"슈퍼마켓",
       route3_t:"도보 8분", route3_d:"게이세이 히키후네역",
@@ -794,8 +889,13 @@
       host_h2:"호스트 소개",
       host_years:" · 호스팅 경력 2년",
       host_rate:"응답률 100%", host_speed:"보통 1시간 이내 답장", host_cohost:"공동 호스트: 나미",
-      host_quote:"“매우 넓고 편리해요” — 게스트 리뷰 중",
-      host_rating:"5.0 (리뷰 5건)",
+      host_super:"슈퍼호스트", host_lang:"사용 언어: 일본어",
+      host_rating:"4.93 (리뷰 15건)",
+      rate_clean:"청결도", rate_accuracy:"정확도", rate_checkin:"체크인", rate_comm:"의사소통", rate_location:"위치", rate_value:"가격 대비 만족도",
+      notes_h:"이용 안내",
+      note1:"전체 금연입니다 (실내·부지 내 모두 흡연 불가).",
+      note2:"조용한 주택가이므로 야간과 이른 아침에는 정숙해 주세요. 근처에 영유아가 있는 가정이 거주하고 있습니다.",
+      note3:"실외 및 출입구에 방범 카메라가 설치되어 있습니다.",
       gallery_h2:"사진으로 보는 실내",
       gallery_p:"총 20장의 사진으로 집의 구석구석을 살펴보세요. 사진을 클릭하면 크게 볼 수 있습니다.",
       final_h2:"교지마에서의 숙박은 Airbnb에서.",
@@ -803,6 +903,7 @@
       final_cta:"Airbnb에서 공실 확인하기 ↗",
       footer_line1:"SECOND HOUSE 교지마 ／ 도쿄도 스미다구 교지마 (게이세이 히키후네역 도보 8분)",
       footer_line2:"호스트: Kenta・나미",
+      footer_license:"여관업법 허가｜스미다구 보건소｜7墨衛生環第1011号",
       footer_map_link:"Google 지도에서 보기 ↗",
       lb_close:"닫기", lb_prev:"이전 사진", lb_next:"다음 사진",
       p1:"다이닝 &amp; 주방", p2:"풀옵션 주방", p3:"세면대 &amp; 세탁건조기", p4:"워시렛 화장실",
